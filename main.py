@@ -10,13 +10,22 @@ def count_chars(book):
     book = book.lower()
     chars = {}
     for char in book:
-        if char in chars:
+        if char in chars and char.isalpha():
             chars[char] += 1
-        else: 
+        elif char.isalpha(): 
             chars[char] = 1
     return chars
     
-    
+def sort_dict(dict):
+    i=0
+    listed = []
+    for char in dict:
+        listed.append({"char":char, "count":dict[char]})
+    #listed.sort(reverse=True, key=listed["count"])
+    print(f"\n\n\n{listed}")
+    return None
+
+
 def main():
     print("Provide book filepath. 'Enter' for Frankenstein")
     path = input()
@@ -31,5 +40,7 @@ def main():
     chars = count_chars(book)
     print("The character report:")
     print(f"The character \"{chars}")
+
+    sort_dict(chars)
 
 main()
