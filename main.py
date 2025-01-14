@@ -1,3 +1,8 @@
+#This project was created for the boot.dev course, bookbot project.
+#AnthiasD
+#1/13/24
+
+
 def open_book(path_to_file="./books/Frankenstein.txt"):
     with open(path_to_file) as f:
         contents = f.read()
