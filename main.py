@@ -1,16 +1,17 @@
 #This project was created for the boot.dev course, bookbot project.
-#AnthiasD
-#1/13/24
+#Completed 1/13/24
 
-
-def open_book(path_to_file="./books/Frankenstein.txt"):
+#Open file and return for parsing
+def open_book(path_to_file="./books/Frankenstein.txt"): #default to the book being used for project to reduce rerun overhead
     with open(path_to_file) as f:
         contents = f.read()
-        return contents, path_to_file
-    
+        return contents, path_to_file #return both the book and path in case defaul path is used
+
+#Split the book into a list of words, return count    
 def count_words(book):
     return len(book.split())
 
+#counts up each character occurance, alpha characters only. Returns this as a dictionary by letter.
 def count_chars(book):
     book = book.lower()
     chars = {}
@@ -20,7 +21,8 @@ def count_chars(book):
         elif char.isalpha(): 
             chars[char] = 1
     return chars
-    
+
+#Resorts the character count dictionary into a list of dicts, sorted using the number of occurances
 def sort_dict(dict):
     i=0
     listed = []
@@ -31,6 +33,7 @@ def sort_dict(dict):
     #print(f"\n\n\n{listed}")
     return listed
 
+#function as key for sorting the list of dicts
 def sort_key(chars):
     return chars["count"]
 
@@ -39,7 +42,7 @@ def main():
     print("Provide book filepath. 'Enter' for Frankenstein")
     path = None
     path = input()
-    if path == '':
+    if path == '': #get the default path in addition to book if one is not provided via input()
         book, path = open_book()
     else:
         book = open_book(path)
